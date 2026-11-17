@@ -22,6 +22,13 @@ Los 7 proyectos iniciales (Python Learning Dashboard, NEXARO Personal AI, NEXARO
 CS Mentor, Excel Academy, AI Commerce Operating System, Claude Architect Academy) se crean **solo con el nombre**
 y marcados como *pendiente de verificar*: descripción, categoría, estado y repositorio quedan vacíos hasta que los completes.
 
+[![CI](https://github.com/Marbi8891/NEXARO-PROJECT-HUB/actions/workflows/ci.yml/badge.svg)](https://github.com/Marbi8891/NEXARO-PROJECT-HUB/actions/workflows/ci.yml)
+
+## Probarlo en la nube con GitHub Codespaces
+
+**Code → Codespaces → Create codespace on main**. La app arranca sola y se abre en el puerto 8080.
+Detalles en [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md#6-despliegue-con-github).
+
 ## Arranque rápido (Docker)
 
 ```bash

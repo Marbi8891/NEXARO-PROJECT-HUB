@@ -1,0 +1,19 @@
+{
+  "name": "NEXARO Projects Hub",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "hostRequirements": { "cpus": 2, "memory": "4gb" },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "docker compose up -d --build",
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": { "label": "NEXARO Hub", "onAutoForward": "openBrowser" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-azuretools.vscode-docker"]
+    }
+  }
+}

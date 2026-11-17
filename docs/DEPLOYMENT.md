@@ -49,3 +49,41 @@ docker compose down -v                                 # parar y BORRAR la base 
 
 El puerto está ligado a `127.0.0.1`. Para publicarlo, pon delante un proxy con HTTPS
 (por ejemplo Caddy: `reverse_proxy localhost:8080`) y activa `NEXARO_COOKIE_SECURE=true`.
+
+## 6. Despliegue con GitHub
+
+### Integración continua (GitHub Actions)
+
+`.github/workflows/ci.yml` se ejecuta en cada push y pull request:
+
+1. Tests del backend con un PostgreSQL de servicio, comprobando también que las migraciones coinciden con los modelos (`alembic check`).
+2. Comprobación de sintaxis de todos los módulos JS del frontend.
+3. Build de las dos imágenes Docker.
+
+### Imágenes en GitHub Container Registry
+
+`.github/workflows/publish.yml` publica, cuando CI pasa en `main` o al crear un tag `v*`:
+
+- `ghcr.io/marbi8891/nexaro-hub-backend`
+- `ghcr.io/marbi8891/nexaro-hub-frontend`
+
+Para usar esas imágenes en cualquier servidor sin compilar:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.ghcr.yml pull
+docker compose -f docker-compose.yml -f docker-compose.ghcr.yml up -d
+```
+
+Si el repositorio es privado, los paquetes también lo son: haz `docker login ghcr.io` con un token con permiso `read:packages`.
+
+### GitHub Codespaces (la app en la nube con un clic)
+
+En GitHub: **Code → Codespaces → Create codespace on main**. El contenedor:
+
+1. Genera un `.env` con secretos aleatorios (solo dentro del Codespace).
+2. Ejecuta `docker compose up -d --build`.
+3. Abre el puerto 8080 en el navegador por HTTPS.
+
+Por defecto el puerto es privado (solo tú, autenticado en GitHub). Si quieres enseñarlo a alguien, cambia la
+visibilidad del puerto a *Public* en la pestaña **Ports**. El Codespace se apaga tras un tiempo sin uso; los datos
+se conservan mientras no lo borres.
