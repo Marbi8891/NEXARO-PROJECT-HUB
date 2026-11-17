@@ -1,7 +1,60 @@
+# ── Secretos y configuración local ─────────────────────────────
+# Nunca subir credenciales: usa .env.example como plantilla.
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+secrets/
+
+# ── Python ─────────────────────────────────────────────────────
 __pycache__/
-*.pyc
-.pytest_cache/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
 .venv/
+venv/
+env/
+.python-version
+
+# ── Tests y calidad ────────────────────────────────────────────
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.mypy_cache/
+.ruff_cache/
+test-results/
+playwright-report/
+
+# ── Node (herramientas opcionales, p. ej. Playwright) ──────────
 node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ── Base de datos y datos locales ──────────────────────────────
+*.sqlite3
+*.db
+pgdata/
+backups/
+*.sql.gz
+docker-compose.override.yml
+
+# ── Logs ───────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Editores y sistema operativo ───────────────────────────────
+.vscode/
+.idea/
+*.swp
+*~
 .DS_Store
+Thumbs.db
+
+# ── Claude Code (configuración local personal) ─────────────────
+.claude/settings.local.json
