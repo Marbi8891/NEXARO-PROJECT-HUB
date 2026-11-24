@@ -20,6 +20,14 @@ Central index for the NEXARO product family and related engineering work.
 - Keep product status honest: distinguish implemented, tested, deployed and planned capabilities.
 - Never commit credentials, tokens, customer data or local environment files.
 
+## Hub application
+
+[![CI](https://github.com/Marbi8891/NEXARO-PROJECT-HUB/actions/workflows/ci.yml/badge.svg)](https://github.com/Marbi8891/NEXARO-PROJECT-HUB/actions/workflows/ci.yml)
+
+This repository also contains the NEXARO Projects Hub app (FastAPI + PostgreSQL + vanilla JS).
+Try it in the cloud: **Code → Codespaces → Create codespace on main** (it starts itself on port 8080).
+Docker and GitHub deployment details: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
 ## Engineering priorities
 
 1. Consolidate and verify the canonical NEXARO AI repository.
