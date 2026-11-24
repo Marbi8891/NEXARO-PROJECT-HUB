@@ -1,57 +1,40 @@
-# NEXARO Projects Hub
+# NEXARO Project Hub
 
-Plataforma central para gestionar, monitorizar, documentar y mostrar todos tus proyectos de software.
+Central index for the NEXARO product family and related engineering work.
 
-> Estado: **MVP (v0.1.0)**. Ver qué está hecho y qué falta en [docs/AUDIT.md](docs/AUDIT.md).
+## Main projects
 
-## Qué incluye el MVP
+| Project | Purpose | Repository |
+|---|---|---|
+| NEXARO Personal AI | Local-first AI workspace, agent capabilities and governed integrations | [NEXARO-PERSONAL-AI-](https://github.com/Marbi8891/NEXARO-PERSONAL-AI-) |
+| NEXARO Agency | Agency operations and client-facing services | [nexaro-agency](https://github.com/Marbi8891/nexaro-agency) |
+| NEXARO ERP | ERP product and business operations | [NEXARO-ERP](https://github.com/Marbi8891/NEXARO-ERP) |
+| NEXARO AI | Earlier AI product exploration | [nexaro-ai](https://github.com/Marbi8891/nexaro-ai) |
+| NEXARO Landing | Public landing page | [nexaro-landing](https://github.com/Marbi8891/nexaro-landing) |
 
-- Autenticación con cuenta de propietario (sesión segura con cookie HttpOnly + CSRF).
-- Dashboard con métricas reales (sin datos inventados), gráficos por estado y categoría,
-  proyectos que requieren atención, commits recientes y actividad.
-- Registro de proyectos: alta manual, edición, borrado, perfil completo, tareas básicas.
-- Búsqueda, filtros (categoría, estado, prioridad) y ordenación; vista en tarjetas o tabla.
-- Gestión de estados: IDEA, PLANNING, IN DEVELOPMENT, TESTING, PRODUCTION, MAINTENANCE, ARCHIVED (+ «Pendiente»).
-- GitHub: conexión con token de solo lectura (cifrado en servidor), listado, importación y sincronización
-  de repositorios (metadatos, README, lenguajes, ficheros de dependencias, últimos commits).
-- Portfolio público separado (`/portfolio.html`) que solo muestra los proyectos marcados como públicos.
-- Tema oscuro / claro, sidebar plegable, diseño responsive y accesible.
-- Despliegue con Docker Compose (PostgreSQL + FastAPI + nginx) con health checks.
+## Working rules
 
-Los 7 proyectos iniciales (Python Learning Dashboard, NEXARO Personal AI, NEXARO Network Intelligence,
-CS Mentor, Excel Academy, AI Commerce Operating System, Claude Architect Academy) se crean **solo con el nombre**
-y marcados como *pendiente de verificar*: descripción, categoría, estado y repositorio quedan vacíos hasta que los completes.
+- Treat `NEXARO-PERSONAL-AI-` as the canonical personal-AI codebase unless a project decision explicitly changes this.
+- Do not assume sibling repositories are synchronized.
+- Before moving code between repositories, compare dependencies, architecture, licensing and history.
+- Keep product status honest: distinguish implemented, tested, deployed and planned capabilities.
+- Never commit credentials, tokens, customer data or local environment files.
+
+## Hub application
 
 [![CI](https://github.com/Marbi8891/NEXARO-PROJECT-HUB/actions/workflows/ci.yml/badge.svg)](https://github.com/Marbi8891/NEXARO-PROJECT-HUB/actions/workflows/ci.yml)
 
-## Probarlo en la nube con GitHub Codespaces
+This repository also contains the NEXARO Projects Hub app (FastAPI + PostgreSQL + vanilla JS).
+Try it in the cloud: **Code → Codespaces → Create codespace on main** (it starts itself on port 8080).
+Docker and GitHub deployment details: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
-**Code → Codespaces → Create codespace on main**. La app arranca sola y se abre en el puerto 8080.
-Detalles en [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md#6-despliegue-con-github).
+## Engineering priorities
 
-## Arranque rápido (Docker)
+1. Consolidate and verify the canonical NEXARO AI repository.
+2. Keep architecture decisions, security reviews and release notes current.
+3. Add reproducible setup, CI checks and clear demo instructions to each public product repository.
+4. Archive or clearly label superseded experiments only after checking their dependencies and history.
 
-```bash
-cp .env.example .env
-# Edita .env: pon POSTGRES_PASSWORD y NEXARO_SECRET_KEY (valores largos y aleatorios)
-docker compose up -d --build
-```
+## Owner
 
-Abre <http://localhost:8080>. La primera vez te pedirá crear la cuenta de propietario.
-Más detalles en [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
-
-## Documentación
-
-| Documento | Contenido |
-| --- | --- |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | Arquitectura, modelos de datos, flujo de peticiones |
-| [DEVELOPMENT.md](DEVELOPMENT.md) | Entorno local sin Docker, tests, migraciones, convenciones |
-| [SECURITY.md](SECURITY.md) | Modelo de seguridad y buenas prácticas |
-| [docs/API.md](docs/API.md) | Referencia de la API REST |
-| [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | Despliegue con Docker Compose |
-| [docs/AUDIT.md](docs/AUDIT.md) | Auditoría inicial y hoja de ruta por fases |
-
-## Stack
-
-Frontend: HTML5, CSS3, JavaScript ES Modules, Chart.js, Lucide · Backend: Python 3.12, FastAPI, Pydantic v2,
-SQLAlchemy 2, Alembic, PostgreSQL · Infra: Docker, Docker Compose, nginx · Tests: Pytest (+ pruebas E2E con Playwright).
+Mrabeh Fathi Boussayff · [GitHub](https://github.com/Marbi8891)
